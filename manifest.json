@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "Github status",
+  "version": "1.0",
+
+  "description": "Shows github issue status",
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.github.com/*"],
+      "js": ["status.js"]
+    }
+  ]
+
+}
