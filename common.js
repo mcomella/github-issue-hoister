@@ -5,7 +5,14 @@ function getContainerNode() {
 function getTitleNode(title) {
     let titleNode = document.createElement('p');
     titleNode.innerText = title;
+    titleNode.style = 'margin-bottom: 0px;'; // override GH style.
     return titleNode;
+}
+
+function getUlNode() {
+    let ul = document.createElement('ul');
+    ul.style = 'padding-left: 40px; margin-bottom: 14px;';
+    return ul;
 }
 
 /*

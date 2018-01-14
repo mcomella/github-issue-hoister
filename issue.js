@@ -47,7 +47,7 @@ function _getCommitMsgNodes() {
 
 /* Creates a unordered list node with the given DOM nodes as list items. */
 function _createListOfNodes(nodes) {
-    let ul = document.createElement('ul');
+    let ul = getUlNode();
     for (let node of nodes) {
         let li = document.createElement('li');
         li.appendChild(node);

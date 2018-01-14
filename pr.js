@@ -1,4 +1,3 @@
-// TODO: css.
 function linkPullRequest() {
     let issueLinkNodes = _getIssueLinkNodesFromCommitMsgs();
     if (issueLinkNodes.length < 1) {
@@ -66,7 +65,7 @@ function _isClosingLabel(label) {
 
 /* Given issue link nodes, returns a list node referencing them. */
 function _getIssueListNode(issueLinkNodes) {
-    let issueList = document.createElement('ul');
+    let issueList = getUlNode();
     for (let [labelNode, numNode] of issueLinkNodes) {
         let li = document.createElement('li');
         if (labelNode) {
