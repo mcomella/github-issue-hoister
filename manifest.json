@@ -8,7 +8,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.github.com/*"],
-      "js": ["common.js", "issue.js", "pr.js", "main.js"]
+      "js": ["src/common.js", "src/issue.js", "src/pr.js", "src/main.js"]
     }
   ]
 
