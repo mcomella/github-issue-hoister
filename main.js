@@ -11,40 +11,42 @@ function dispatch() {
     } else if (window.location.pathname.match(issueRegex)) {
         linkIssue();
     } else {
-        // TODO: maybe we should post "none found".
         log('none');
     }
 }
 
+// TODO: css.
 function linkPullRequest() {
-    let issueLinkNodes = getIssueLinkNodes();
+    let issueLinkNodes = getIssueLinkNodesInPR();
     if (issueLinkNodes.length < 1) {
+        // TODO: none found?
         return;
     }
 
-    // TODO: css.
-    let linkingParentNode = document.createElement('div');
-    let titleNode = document.createElement('p');
-    titleNode.innerText = 'Created by github add-on:'; // TODO
-    linkingParentNode.appendChild(titleNode);
+    let container = document.createElement('div');
 
-    let unorderedList = document.createElement('ul');
-    linkingParentNode.appendChild(unorderedList);
+    let titleNode = document.createElement('p');
+    titleNode.innerText = 'Issues addressed in this PR:'; // TODO
+    container.appendChild(titleNode);
+
+    let issueList = document.createElement('ul');
+    container.appendChild(issueList);
     for (let issueNode of issueLinkNodes) {
         let li = document.createElement('li');
         li.append(issueNode.cloneNode(true));
-        unorderedList.appendChild(li);
+        issueList.appendChild(li);
     }
 
+    // Insert our changes into the DOM.
     let threadNode = document.getElementById('discussion_bucket');
-    threadNode.parentNode.insertBefore(linkingParentNode, threadNode);
+    threadNode.parentNode.insertBefore(container, threadNode);
 }
 
 // TODO: dedupe.
 // TODO: closes/issue.
 // TODO: isn't necessarily the closing/issue link.
 /* For PR: extracts the linked/hoverable nodes in commit message lines. */
-function getIssueLinkNodes() {
+function getIssueLinkNodesInPR() {
     let commitMsgNodes = document.getElementsByClassName('commit-message');
     let issueLinkNodes = [];
     return Array.from(commitMsgNodes)
@@ -67,3 +69,5 @@ dispatch();
 function log(msg) {
     console.log('lol: ' + msg);
 }
+
+lol();
