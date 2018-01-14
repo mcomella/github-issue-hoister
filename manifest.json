@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Github status",
-  "version": "1.0",
+  "name": "GitHub Issue Hoister",
+  "version": "0.0.1",
 
-  "description": "Shows github issue status",
+  "description": "Helps answer questions like, \"Which PR fixes this issue?\", by placing relevant commit information at the top of a GitHub issue.",
 
   "content_scripts": [
     {
