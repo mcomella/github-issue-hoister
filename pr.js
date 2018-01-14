@@ -1,7 +1,6 @@
 function linkPullRequest() {
     let issueLinkNodes = _getIssueLinkNodesFromCommitMsgs();
     if (issueLinkNodes.length < 1) {
-        // TODO: none found?
         return;
     }
 

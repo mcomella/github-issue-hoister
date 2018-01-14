@@ -1,11 +1,6 @@
-// TODO: we can infer:
-// - (DONE) Commits which reference this issue
-// - a PR which references this issue (open, close, etc.)
-// - Closed with commit...
 function linkIssue() {
     let commitMsgNodes = _getCommitMsgNodes();
     if (commitMsgNodes.length < 1) {
-        // TODO: none found?
         return;
     }
 
