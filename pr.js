@@ -39,6 +39,7 @@ function _getIssueNodes() {
     let issueNumToNodes = {};
     for (let commitMsgNode of commitMsgNodes) {
         // For now, we assume a commit message will only have one label and num.
+        // N.B: 'issue-keyboard' only appears for "closes", not "issue".
         let issueLabelNode = commitMsgNode.getElementsByClassName('issue-keyword')[0];
         let issueNumNode = commitMsgNode.getElementsByClassName('issue-link')[0];
 
