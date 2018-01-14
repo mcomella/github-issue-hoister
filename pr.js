@@ -1,40 +1,27 @@
 // TODO: css.
-let linkPullRequest = function linkPullRequest() {
-    let issueLinkNodes = _getIssueNodes();
+function linkPullRequest() {
+    let issueLinkNodes = _getIssueLinkNodesFromCommitMsgs();
     if (issueLinkNodes.length < 1) {
         // TODO: none found?
         return;
     }
 
-    let container = document.createElement('div');
+    let container = getContainerNode();
 
-    let titleNode = document.createElement('p');
-    titleNode.innerText = 'Commits in this PR address the following issues:';
-    container.appendChild(titleNode);
-
-    let issueList = document.createElement('ul');
-    for (let [labelNode, numNode] of issueLinkNodes) {
-        let li = document.createElement('li');
-        if (labelNode) {
-            li.append(labelNode.cloneNode(true));
-            li.append(' ');
-        }
-        li.append(numNode.cloneNode(true));
-        issueList.appendChild(li);
-    }
+    let title = getTitleNode('Issues addressed by commits in this PR');
+    let issueList = _getIssueListNode(issueLinkNodes);
+    container.appendChild(title);
     container.appendChild(issueList);
 
-    // Insert our changes into the DOM.
-    let threadNode = document.getElementById('discussion_bucket');
-    threadNode.parentNode.insertBefore(container, threadNode);
+    insertAboveConversation(container);
 }
 
 /*
- * Extracts the nodes associated with an issue. Returns an array of arrays,
- * where each inner array is [issueLabelNode, issueNumberNode]. The number
+ * Extracts the nodes associated with an issue. Returns an array of duples,
+ * where each duple array is [issueLabelNode, issueNumberNode]. The number
  * node will never be undefined but the label node could be undefined.
  */
-function _getIssueNodes() {
+function _getIssueLinkNodesFromCommitMsgs() {
     let commitMsgNodes = document.getElementsByClassName('commit-message');
     let issueNumToNodes = {};
     for (let commitMsgNode of commitMsgNodes) {
@@ -75,4 +62,20 @@ function _isClosingLabel(label) {
         'closes',
         'fixes'
     ].some((el) => lcLabel === el);
+}
+
+/* Given issue link nodes, returns a list node referencing them. */
+function _getIssueListNode(issueLinkNodes) {
+    let issueList = document.createElement('ul');
+    for (let [labelNode, numNode] of issueLinkNodes) {
+        let li = document.createElement('li');
+        if (labelNode) {
+            li.append(labelNode.cloneNode(true));
+            li.append(' ');
+        }
+        li.append(numNode.cloneNode(true));
+        issueList.appendChild(li);
+    }
+
+    return issueList;
 }
