@@ -3,7 +3,7 @@
   "name": "GitHub Issue Hoister",
   "version": "0.0.1",
 
-  "description": "Helps answer questions like, \"Which PR fixes this issue?\", by placing relevant commit information at the top of a GitHub issue.",
+  "description": "GitHub Issue Hoister helps answer, \"Which PR fixes this GitHub issue?\", by hoisting relevant commit info to the top of the issue",
 
   "content_scripts": [
     {
