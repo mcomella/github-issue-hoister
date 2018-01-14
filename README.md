@@ -1,4 +1,6 @@
 # GitHub Issue Hoister
+[Available on addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/github-issue-hoister/)
+
 ### Problem
 When viewing a GitHub issue, it's time-consuming to find any pull
 requests that address the issue: you need to scroll through many issue comments
