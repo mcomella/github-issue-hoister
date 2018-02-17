@@ -26,5 +26,5 @@ function insertAboveConversation(node) {
 }
 
 function log(msg) {
-    console.log('lol: ' + msg);
+    console.log('github-issue-hoister add-on: ' + msg);
 }

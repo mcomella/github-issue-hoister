@@ -8,8 +8,6 @@ function dispatch() {
         linkPullRequest();
     } else if (window.location.pathname.match(issueRegex)) {
         linkIssue();
-    } else {
-        log('none');
     }
 }
 
