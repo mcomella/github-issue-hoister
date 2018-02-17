@@ -1,4 +1,8 @@
 function linkIssue() {
+    _linkCommitMsgs();
+}
+
+function _linkCommitMsgs() {
     let commitMsgNodes = _getCommitMsgNodes();
     if (commitMsgNodes.length < 1) {
         return;
