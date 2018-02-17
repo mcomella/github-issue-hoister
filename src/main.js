@@ -13,4 +13,24 @@ function dispatch() {
     }
 }
 
+// window.location is an object so we convert it to a string to copy it.
+function _getLocation() { return "" + window.location; }
+
+var currentLocation = _getLocation();
+function dispatchIfLocationUpdate() {
+    if (window.location !== currentLocation) {
+        currentLocation = _getLocation();
+        dispatch();
+    }
+}
+
+// We watch the DOM to detect when GitHub changes the page through the history API,
+// such as when the user is on the issues list and they click an issue.
+//
+// The proper way to do this would be browser.webNavigation.onHistoryStateUpdated,
+// but this isn't available to content scripts.
+let containerObserver = new MutationObserver(dispatchIfLocationUpdate);
+let ghPageContainer = document.getElementById('js-repo-pjax-container');
+containerObserver.observe(ghPageContainer, {childList: "true"});
+
 dispatch();
