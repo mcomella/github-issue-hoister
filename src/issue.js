@@ -1,5 +1,45 @@
+let _commitRegex = new RegExp('/[^/]+/[^/]+/commit/[a-zA-Z0-9]+')
+
 function linkIssue() {
+    _linkClosedByCommit();
     _linkCommitMsgs();
+}
+
+function _linkClosedByCommit() {
+    let closedCommitNodes = _getClosedCommitNodes();
+    if (closedCommitNodes.length < 1) {
+        return;
+    }
+
+    let container = getContainerNode();
+
+    let commitTitle = getTitleNode('Commits closing this issue:');
+    let commitsList = _createListOfNodes(closedCommitNodes);
+    container.appendChild(commitTitle);
+    container.appendChild(commitsList);
+
+    insertAboveConversation(container);
+}
+
+function _getClosedCommitNodes() {
+    let discussionNodes = document.getElementsByClassName('discussion-item-header');
+
+    let discussionLinks = [];
+    Array.from(discussionNodes).forEach((discussionNode) => {
+        Array.prototype.push.apply(discussionLinks,
+            Array.from(discussionNode.getElementsByTagName('a')));
+    });
+
+    let commitLinks = discussionLinks.filter((node) => {
+        return node.href.match(_commitRegex) !== null
+    });
+
+    return commitLinks.map((commitNode) => {
+        let newNode = document.createElement('a');
+        newNode.href = commitNode.href;
+        newNode.innerText = commitNode.innerText;
+        return newNode;
+    });
 }
 
 function _linkCommitMsgs() {
