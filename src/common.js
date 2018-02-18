@@ -1,5 +1,9 @@
+let ADDON_DIV_CLASS = 'addon-github-issue-hoister';
+
 function getContainerNode() {
-    return document.createElement('div');
+    let container = document.createElement('div');
+    container.classList.add(ADDON_DIV_CLASS);
+    return container;
 }
 
 function getTitleNode(title) {

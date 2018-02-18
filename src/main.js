@@ -1,4 +1,14 @@
+function _removeAddedNodes() {
+    let addedElements = Array.from(document.getElementsByClassName(ADDON_DIV_CLASS));
+    addedElements.forEach((node) => {
+        node.parentNode.removeChild(node);
+    });
+}
+
 function dispatch() {
+    // Back-forward navigation can add nodes: create a clean slate.
+    _removeAddedNodes();
+
     let rePre = '^/.+/.+/';
     let rePost = '/[0-9]+';
     let prRegex = new RegExp(`${rePre}pull${rePost}`);
