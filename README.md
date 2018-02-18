@@ -21,8 +21,6 @@ This solution was chosen for speed of implementation but is not ideal:
 - You still need to click through links to find the most recent pull request
 - It requires an add-on so it's not available to all users.
 
-Note: only "Author added a commit..." is implemented so far.
-
 ### Alternatives
 I only looked briefly but I saw no other existing alternatives.
 
