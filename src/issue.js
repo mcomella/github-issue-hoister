@@ -81,7 +81,7 @@ function _getCommitMsgNodes() {
         msgsToNodes[node.innerText] = node;
     });
 
-    return Object.keys(msgsToNodes).map((key) => msgsToNodes[key]);
+    return Object.keys(msgsToNodes).map((key) => msgsToNodes[key]).reverse();
 }
 
 /* Creates a unordered list node with the given DOM nodes as list items. */
