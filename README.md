@@ -1,25 +1,13 @@
 # GitHub Issue Hoister
 [Available on addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/github-issue-hoister/)
 
-### Problem
-When viewing a GitHub issue, it's time-consuming to find any pull
-requests that address the issue: you need to scroll through many issue comments
-to find GitHub's autolinks, such as...
-- "Author added a commit... that referenced this issue"
-- "Author referenced this issue"
-- "Author closed this in..."
+When looking at a Github issue, the Github Issue Hoister is intended to help answer the question: "Are there any PRs open for this issue?"
 
-Once you find the autolinks, you have to click through to find the referencing
-pull request and hope they're not out-of-date.
+To do this, it takes the links that already links already present in a Github page, such as "Commits that reference this issue", and hoists them to the top of the page:
 
-### This solution
-This add-on addresses this problem by making the autolinks easier to access –
-they're hoisted to the top of the issue thread – and curating them for least
-likely to be outdated.
+![Example of issue hoister](docs/im/example.png)
 
-This solution was chosen for speed of implementation but is not ideal:
-- You still need to click through links to find the most recent pull request
-- It requires an add-on so it's not available to all users.
+You can generally click these links to navigate between issues and PRs. However, these links are not always reliable: see [the tutorial][] for more information.
 
 ### Alternatives
 I only looked briefly but I saw no other existing alternatives.
@@ -53,3 +41,4 @@ similar to the MIT license.
 
 [kotbot]: https://github.com/mcomella/moz_mobile_github_helper
 [webex]: https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Your_first_WebExtension
+[the tutorial]: https://github.com/mcomella/github-issue-hoister/blob/master/docs/tutorial.md
