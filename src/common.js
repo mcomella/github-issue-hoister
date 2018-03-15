@@ -7,13 +7,20 @@ function getContainerNode() {
 }
 
 function getTitleNode(title, appendTutorial) {
-    if (appendTutorial) {
-        title += ' <a href="https://github.com/mcomella/github-issue-hoister/tree/master/docs/tutorial.md">(tutorial)</a>'
-    }
-
     let titleNode = document.createElement('p');
     titleNode.innerHTML = title;
     titleNode.style = 'margin-bottom: 0px;'; // override GH style.
+
+    if (appendTutorial) {
+        let tutorialLink = document.createElement('a');
+        tutorialLink.setAttribute('href', 'https://github.com/mcomella/github-issue-hoister/blob/master/docs/tutorial.md');
+        tutorialLink.innerText = 'tutorial';
+
+        titleNode.append(' (');
+        titleNode.appendChild(tutorialLink);
+        titleNode.append(')');
+    }
+
     return titleNode;
 }
 
