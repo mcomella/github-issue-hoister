@@ -6,9 +6,13 @@ function getContainerNode() {
     return container;
 }
 
-function getTitleNode(title) {
+function getTitleNode(title, appendTutorial) {
+    if (appendTutorial) {
+        title += ' <a href="https://github.com/mcomella/github-issue-hoister/tree/master/docs/tutorial.md">(tutorial)</a>'
+    }
+
     let titleNode = document.createElement('p');
-    titleNode.innerText = title;
+    titleNode.innerHTML = title;
     titleNode.style = 'margin-bottom: 0px;'; // override GH style.
     return titleNode;
 }

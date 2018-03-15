@@ -50,7 +50,7 @@ function _linkCommitMsgs() {
 
     let container = getContainerNode();
 
-    let commitTitle = getTitleNode('Commits referencing this issue:');
+    let commitTitle = getTitleNode('Commits referencing this issue:', true);
     let commitsList = _createListOfNodes(commitMsgNodes);
     container.appendChild(commitTitle);
     container.appendChild(commitsList);
